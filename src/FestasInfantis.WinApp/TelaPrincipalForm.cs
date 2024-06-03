@@ -28,9 +28,24 @@ namespace FestasInfantis.WinApp
 
         private void clientesMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorCliente();
+            controlador = new ControladorCliente(repositorioCliente);
 
             ConfigurarTelaPrincipal(controlador);
+        }
+
+        private void btnAdicionar_Click(object sender, EventArgs e)
+        {
+            controlador.Adicionar();
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            controlador.Editar();
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            controlador.Excluir();
         }
 
         private void ConfigurarTelaPrincipal(ControladorBase controladorSelecionado)
@@ -64,13 +79,11 @@ namespace FestasInfantis.WinApp
 
         private void ConfigurarListagem(ControladorBase controladorSelecionado)
         {
-            UserControl listagemContato = controladorSelecionado.ObterListagem();
-            listagemContato.Dock = DockStyle.Fill;
+            UserControl listagemCliente = controladorSelecionado.ObterListagem();
+            listagemCliente.Dock = DockStyle.Fill;
 
             pnlRegistros.Controls.Clear();
-            pnlRegistros.Controls.Add(listagemContato);
+            pnlRegistros.Controls.Add(listagemCliente);
         }
-
-       
     }
 }
