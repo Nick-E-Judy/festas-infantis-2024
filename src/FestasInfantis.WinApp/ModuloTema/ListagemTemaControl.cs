@@ -1,0 +1,28 @@
+﻿using FestasInfantis.WinApp.ModuloCliente;
+
+namespace FestasInfantis.WinApp.ModuloTema
+{
+    public partial class ListagemTemaControl : UserControl
+    {
+        public ListagemTemaControl()
+        {
+            InitializeComponent();
+        }
+
+        public void AtualizarRegistros(List<Tema> temas)
+        {
+            listItens.Items.Clear();
+
+            foreach (Tema tema in temas)
+                listTemas.Items.Add(tema);
+        }
+
+        public Tema ObterRegistroSelecionado()
+        {
+            if (listTemas.SelectedItem == null)
+                return null;
+
+            return (Tema)listTemas.SelectedItem;
+        }
+    }
+}
