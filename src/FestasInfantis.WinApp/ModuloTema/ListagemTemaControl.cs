@@ -1,6 +1,4 @@
-﻿using FestasInfantis.WinApp.ModuloCliente;
-
-namespace FestasInfantis.WinApp.ModuloTema
+﻿namespace FestasInfantis.WinApp.ModuloTema
 {
     public partial class ListagemTemaControl : UserControl
     {
@@ -11,7 +9,7 @@ namespace FestasInfantis.WinApp.ModuloTema
 
         public void AtualizarRegistros(List<Tema> temas)
         {
-            listItens.Items.Clear();
+            listTemas.Items.Clear();
 
             foreach (Tema tema in temas)
                 listTemas.Items.Add(tema);

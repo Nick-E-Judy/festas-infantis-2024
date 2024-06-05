@@ -13,8 +13,6 @@
             {
                 txtId.Text = value.Id.ToString();
                 txtNome.Text = value.Nome;
-                txtTelefone.Text = value.Telefone;
-                txtCPF.Text = value.Cpf;
             }
             get
             {
@@ -24,10 +22,9 @@
         private void btnGravar_Click(object sender, EventArgs e)
         {
             string nome = txtNome.Text;
-            string telefone = txtTelefone.Text;
-            string cpf = txtCPF.Text;
+            //decimal valorTotal =
 
-            tema = new Tema(nome, telefone, cpf);
+            //tema = new Tema(nome, valorTotal);
 
             List<string> erros = tema.Validar();
 

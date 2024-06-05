@@ -28,10 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            listTemas = new ListBox();
+            SuspendLayout();
+            // 
+            // listTemas
+            // 
+            listTemas.Dock = DockStyle.Fill;
+            listTemas.FormattingEnabled = true;
+            listTemas.Location = new Point(0, 0);
+            listTemas.Name = "listTemas";
+            listTemas.Size = new Size(480, 321);
+            listTemas.TabIndex = 0;
+            // 
+            // ListagemTemaControl
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(listTemas);
+            Name = "ListagemTemaControl";
+            Size = new Size(480, 321);
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private ListBox listTemas;
     }
 }

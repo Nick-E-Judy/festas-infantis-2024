@@ -1,4 +1,6 @@
-﻿using FestasInfantis.WinApp.ModuloCliente;
+﻿using FestasInfantis.WinApp.Compartilhado;
+using FestasInfantis.WinApp.ModuloTema;
+
 
 namespace FestasInfantis.WinApp.ModuloTema
 {
@@ -9,12 +11,12 @@ namespace FestasInfantis.WinApp.ModuloTema
             InitializeComponent();
         }
 
-        public void AtualizarRegistros(List<Cliente> clientes)
+        public void AtualizarRegistros(List<Tema> temas)
         {
             grid.Rows.Clear();
 
-            foreach (Cliente c in clientes)
-                grid.Rows.Add(c.Id, c.Nome, c.Telefone, c.Cpf);
+            foreach (Tema c in temas)
+                grid.Rows.Add(c.Id, c.Nome);
         }
 
         public int ObterRegistroSelecionado()
@@ -27,9 +29,7 @@ namespace FestasInfantis.WinApp.ModuloTema
             return new DataGridViewColumn[]
                         {
                 new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id" },
-                new DataGridViewTextBoxColumn { DataPropertyName = "Nome", HeaderText = "Nome" },
-                new DataGridViewTextBoxColumn { DataPropertyName = "Telefone", HeaderText = "Telefone" },
-                new DataGridViewTextBoxColumn { DataPropertyName = "CPF", HeaderText = "CPF" },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Nome", HeaderText = "Nome" }
             };
         }
     }
