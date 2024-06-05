@@ -1,5 +1,6 @@
 using FestasInfantis.WinApp.Compartilhado;
 using FestasInfantis.WinApp.ModuloCliente;
+using FestasInfantis.WinApp.ModuloItem;
 
 namespace FestasInfantis.WinApp
 {
@@ -8,6 +9,7 @@ namespace FestasInfantis.WinApp
         ControladorBase controlador;
 
         RepositorioCliente repositorioCliente;
+        RepositorioItem repositorioItem;
 
         public static TelaPrincipalForm Instancia { get; private set; }
 
@@ -18,6 +20,7 @@ namespace FestasInfantis.WinApp
             lblTipoCadastro.Text = string.Empty;
 
             repositorioCliente = new RepositorioCliente();
+            repositorioItem = new RepositorioItem();
             Instancia = this;
         }
 
@@ -29,6 +32,13 @@ namespace FestasInfantis.WinApp
         private void clientesMenuItem_Click(object sender, EventArgs e)
         {
             controlador = new ControladorCliente(repositorioCliente);
+
+            ConfigurarTelaPrincipal(controlador);
+        }
+
+        private void itensMenuItem_Click(object sender, EventArgs e)
+        {
+            controlador = new ControladorItem(repositorioItem);
 
             ConfigurarTelaPrincipal(controlador);
         }
