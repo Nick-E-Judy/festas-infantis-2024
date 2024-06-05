@@ -1,5 +1,6 @@
 ﻿using FestasInfantis.WinApp.Compartilhado;
 using FestasInfantis.WinApp.ModuloCliente;
+using FestasInfantis.WinApp.ModuloItem;
 
 namespace FestasInfantis.WinApp.ModuloTema
 {
@@ -7,13 +8,14 @@ namespace FestasInfantis.WinApp.ModuloTema
     {
         public string Nome { get; set; }
         public decimal ValorTotal { get; set; }
-        //public List<Item> Itens { get; set; }
+        public List<Item> Itens { get; set; }
         //public Aluguel Alugueis { get; set; }
 
-        public Tema(string nome, decimal valorTotal)
+        public Tema(string nome, decimal valorTotal, List<Item> itens)
         {
             Nome = nome;
             ValorTotal = valorTotal;
+            Itens = itens;
         }
         public override List<string> Validar()
         {
@@ -28,10 +30,11 @@ namespace FestasInfantis.WinApp.ModuloTema
 
         public override void AtualizarRegistro(EntidadeBase novoRegistro)
         {
-            Cliente atualizado = (Cliente)novoRegistro;
+            Tema atualizado = (Tema)novoRegistro;
 
             Nome = atualizado.Nome;
-
+            ValorTotal = atualizado.ValorTotal;
+            Itens = atualizado.Itens;
         }
     }
 }

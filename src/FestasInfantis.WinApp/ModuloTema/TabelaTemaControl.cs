@@ -9,6 +9,11 @@ namespace FestasInfantis.WinApp.ModuloTema
         public TabelaTemaControl()
         {
             InitializeComponent();
+
+            grid.Columns.AddRange(ObterColunas());
+
+            grid.ConfigurarGridSomenteLeitura();
+            grid.ConfigurarGridZebrado();
         }
 
         public void AtualizarRegistros(List<Tema> temas)
@@ -16,7 +21,7 @@ namespace FestasInfantis.WinApp.ModuloTema
             grid.Rows.Clear();
 
             foreach (Tema c in temas)
-                grid.Rows.Add(c.Id, c.Nome);
+                grid.Rows.Add(c.Id, c.Nome, c.ValorTotal);
         }
 
         public int ObterRegistroSelecionado()
@@ -29,7 +34,8 @@ namespace FestasInfantis.WinApp.ModuloTema
             return new DataGridViewColumn[]
                         {
                 new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id" },
-                new DataGridViewTextBoxColumn { DataPropertyName = "Nome", HeaderText = "Nome" }
+                new DataGridViewTextBoxColumn { DataPropertyName = "Nome", HeaderText = "Nome" },
+                new DataGridViewTextBoxColumn { DataPropertyName = "ValorTotal", HeaderText = "Valor Total" },
             };
         }
     }

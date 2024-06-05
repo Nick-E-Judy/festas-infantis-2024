@@ -32,7 +32,7 @@
             cadastrosToolStripMenuItem = new ToolStripMenuItem();
             clientesMenuItem = new ToolStripMenuItem();
             itensMenuItem = new ToolStripMenuItem();
-            tarefasToolStripMenuItem = new ToolStripMenuItem();
+            temasMenuItem = new ToolStripMenuItem();
             statusStrip1 = new StatusStrip();
             statusLabelPrincipal = new ToolStripStatusLabel();
             toolStrip1 = new ToolStrip();
@@ -68,7 +68,7 @@
             // 
             // cadastrosToolStripMenuItem
             // 
-            cadastrosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { clientesMenuItem, itensMenuItem, tarefasToolStripMenuItem });
+            cadastrosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { clientesMenuItem, itensMenuItem, temasMenuItem });
             cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
             cadastrosToolStripMenuItem.Size = new Size(86, 24);
             cadastrosToolStripMenuItem.Text = "Cadastros";
@@ -87,11 +87,12 @@
             itensMenuItem.Text = "Itens";
             itensMenuItem.Click += itensMenuItem_Click;
             // 
-            // tarefasToolStripMenuItem
+            // temasMenuItem
             // 
-            tarefasToolStripMenuItem.Name = "tarefasToolStripMenuItem";
-            tarefasToolStripMenuItem.Size = new Size(180, 24);
-            tarefasToolStripMenuItem.Text = "Tarefas";
+            temasMenuItem.Name = "temasMenuItem";
+            temasMenuItem.Size = new Size(180, 24);
+            temasMenuItem.Text = "Temas";
+            temasMenuItem.Click += temasMenuItem_Click;
             // 
             // statusStrip1
             // 
@@ -287,7 +288,7 @@
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripLabel lblTipoCadastro;
         private ToolStripButton btnVisualizarAlugueis;
-        private ToolStripMenuItem tarefasToolStripMenuItem;
+        private ToolStripMenuItem temasMenuItem;
         private ToolStripSeparator toolStripSeparator2;
         private ToolStripButton btnFiltrar;
         private ToolStripSeparator toolStripSeparator3;

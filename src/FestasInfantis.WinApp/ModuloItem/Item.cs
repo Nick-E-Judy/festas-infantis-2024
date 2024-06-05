@@ -22,7 +22,7 @@ namespace FestasInfantis.WinApp.ModuloItem
             Item atualizado = (Item)novoRegistro;
 
             Descricao = atualizado.Descricao;
-            Valor = atualizado.Valor;
+            Valor = atualizado.Valor;   
         }
         public override List<string> Validar()
         {

@@ -1,15 +1,18 @@
 ﻿using FestasInfantis.WinApp.Compartilhado;
+using FestasInfantis.WinApp.ModuloItem;
 
 namespace FestasInfantis.WinApp.ModuloTema
 {
     public class ControladorTema : ControladorBase
     {
         private RepositorioTema repositorioTema;
+        private RepositorioItem repositorioItem;
         private TabelaTemaControl tabelaTema;
 
-        public ControladorTema(RepositorioTema repositorio)
+        public ControladorTema(RepositorioTema repositorioTema, RepositorioItem repositorioItem)
         {
-            repositorioTema = repositorio;
+            this.repositorioTema = repositorioTema;
+            this.repositorioItem = repositorioItem;
         }
 
         public override string TipoCadastro { get { return "Temas"; } }
@@ -23,6 +26,10 @@ namespace FestasInfantis.WinApp.ModuloTema
         public override void Adicionar()
         {
             TelaTemaForm telaTema = new TelaTemaForm();
+
+            List<Item> itensCadastrados = repositorioItem.SelecionarTodos();
+
+            telaTema.CarregarItens(itensCadastrados);
 
             DialogResult resultado = telaTema.ShowDialog();
 
