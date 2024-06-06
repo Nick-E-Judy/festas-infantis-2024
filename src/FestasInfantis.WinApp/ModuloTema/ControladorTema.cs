@@ -28,16 +28,30 @@ namespace FestasInfantis.WinApp.ModuloTema
             TelaTemaForm telaTema = new TelaTemaForm();
 
             List<Item> itensCadastrados = repositorioItem.SelecionarTodos();
+            List<Tema> temasCadastrados = repositorioTema.SelecionarTodos();
 
             telaTema.CarregarItens(itensCadastrados);
 
             DialogResult resultado = telaTema.ShowDialog();
 
-            // guardas = bloquear momentos em que a aplicação toma um "caminho triste"
             if (resultado != DialogResult.OK)
                 return;
 
             Tema novoTema = telaTema.Tema;
+
+            foreach (var item in novoTema.Itens)
+            {
+                if (temasCadastrados.Any(t => t.Itens.Contains(item)))
+                {
+                    MessageBox.Show(
+                        $"O item \"{item.Id}\" já está associado a outro tema.",
+                        "Erro",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error
+                    );
+                    return;
+                }
+            }
 
             repositorioTema.Cadastrar(novoTema);
 
@@ -51,6 +65,9 @@ namespace FestasInfantis.WinApp.ModuloTema
         public override void Editar()
         {
             TelaTemaForm telaTema = new TelaTemaForm();
+
+            List<Item> itensCadastrados = repositorioItem.SelecionarTodos();
+            telaTema.CarregarItens(itensCadastrados);
 
             int idSelecionado = tabelaTema.ObterRegistroSelecionado();
 
