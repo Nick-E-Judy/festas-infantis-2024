@@ -18,7 +18,7 @@ namespace FestasInfantis.WinApp.ModuloAluguel
             grid.Rows.Clear();
 
             foreach (Aluguel a in alugueis)
-                grid.Rows.Add(a.Id, a.Cliente.Nome, a.Tema, a.Status);
+                grid.Rows.Add(a.Id, a.Cliente.Nome, a.Tema.Nome, a.Status);
         }
 
         public int ObterRegistroSelecionado()

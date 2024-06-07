@@ -1,4 +1,7 @@
 ﻿using FestasInfantis.WinApp.Compartilhado;
+using FestasInfantis.WinApp.ModuloCliente;
+using FestasInfantis.WinApp.ModuloItem;
+using FestasInfantis.WinApp.ModuloTema;
 
 namespace FestasInfantis.WinApp.ModuloAluguel
 {
@@ -6,10 +9,15 @@ namespace FestasInfantis.WinApp.ModuloAluguel
     {
         private RepositorioAluguel repositorioAluguel;
         private TabelaAluguelControl tabelaAluguel;
+        private RepositorioCliente repositorioCliente;
+        private RepositorioTema repositorioTema;
 
-        public ControladorAluguel(RepositorioAluguel repositorio)
+        public ControladorAluguel(RepositorioAluguel repositorioAluguel, RepositorioCliente repositorioCliente, RepositorioTema repositorioTema)
         {
-            repositorioAluguel = repositorio;
+            this.repositorioAluguel = repositorioAluguel;
+            this.repositorioCliente = repositorioCliente;
+            this.repositorioTema = repositorioTema;
+
         }
 
         public override string TipoCadastro { get { return "Aluguel"; } }
@@ -22,7 +30,12 @@ namespace FestasInfantis.WinApp.ModuloAluguel
 
         public override void Adicionar()
         {
+            List<Cliente> clientesCadastrados = repositorioCliente.SelecionarTodos();
+            List<Tema> temasCadastrados = repositorioTema.SelecionarTodos();
+
             TelaAluguelForm telaAluguel = new TelaAluguelForm();
+            telaAluguel.CarregarTemas(temasCadastrados);
+            telaAluguel.CarregarClientes(clientesCadastrados);
 
             DialogResult resultado = telaAluguel.ShowDialog();
 
