@@ -28,6 +28,8 @@ namespace FestasInfantis.WinApp.ModuloAluguel
 
         public override string ToolTipExcluir { get { return "Excluir um aluguel existente"; } }
 
+        public string ToolTipConcluirItens { get { return "Concluir aluguel"; } }
+
         public override void Adicionar()
         {
             List<Cliente> clientesCadastrados = repositorioCliente.SelecionarTodos();
@@ -128,6 +130,8 @@ namespace FestasInfantis.WinApp.ModuloAluguel
                 .Instancia
                 .AtualizarRodape($"O aluguel de \"{aluguelSelecionado.Cliente.Nome}\" foi excluído com sucesso!");
         }
+
+        
 
         private void CarregarAlugueis()
         {

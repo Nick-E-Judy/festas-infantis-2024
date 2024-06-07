@@ -21,6 +21,11 @@ namespace FestasInfantis.WinApp.ModuloAluguel
         public DateTime DataPagamento { get; set; }
         public bool Status { get; set; }
 
+        public void Concluir()
+        {
+            Status = true;
+        }
+
         public override List<string> Validar()
         {
             List<string> erros = new List<string>();

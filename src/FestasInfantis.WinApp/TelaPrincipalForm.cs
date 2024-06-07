@@ -78,6 +78,12 @@ namespace FestasInfantis.WinApp
             controlador.Excluir();
         }
 
+        private void btnConcluirAluguel_Click(object sender, EventArgs e)
+        {
+            if (controlador is IControladorSubItens controladorSubItens)
+                controladorSubItens.AtualizarItens();
+        }
+
         private void ConfigurarTelaPrincipal(ControladorBase controladorSelecionado)
         {
             lblTipoCadastro.Text = "Cadastro de " + controladorSelecionado.TipoCadastro;
@@ -94,6 +100,8 @@ namespace FestasInfantis.WinApp
 
             btnFiltrar.Enabled = controladorSelecionado is IControladorFiltravel;
 
+            btnConcluirAluguel.Enabled = controladorSelecionado is IControladorSubItens;
+
             ConfigurarToolTips(controladorSelecionado);
         }
 
@@ -105,6 +113,10 @@ namespace FestasInfantis.WinApp
 
             if (controladorSelecionado is IControladorFiltravel controladorFiltravel)
                 btnFiltrar.ToolTipText = controladorFiltravel.ToolTipFiltrar;
+
+            if (controlador is IControladorSubItens controladorSubItens)
+                btnConcluirAluguel.ToolTipText = controladorSubItens.ToolTipConcluirItens;
+            
         }
 
         private void ConfigurarListagem(ControladorBase controladorSelecionado)
@@ -115,5 +127,7 @@ namespace FestasInfantis.WinApp
             pnlRegistros.Controls.Clear();
             pnlRegistros.Controls.Add(listagemCliente);
         }
+
+   
     }
 }
